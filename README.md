@@ -112,7 +112,7 @@ src/
 ### Installation
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/mafiullahhasan/prisma-press.git
 cd prisma-press
 npm install
 ```
