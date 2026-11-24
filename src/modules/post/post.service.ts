@@ -51,7 +51,8 @@ const getAllPosts = async (query: IPostQuery) => {
     }
 
     andConditions.push({
-        isPremium: false
+        isPremium: false,
+        status: PostStatus.PUBLISHED
     })
 
     const [posts, totalPostCount] = await Promise.all([
@@ -172,7 +173,21 @@ const getMyPosts = async (authorId: string) => {
 const getPostDetails = async (postId: string) => {
 
     const transactionResult = await prisma.$transaction(async (tx) => {
-        await tx.post.update({
+        // Check first, so premium/unpublished posts don't get their views bumped
+        const exists = await tx.post.findFirst({
+            where: {
+                id: postId,
+                isPremium: false,
+                status: PostStatus.PUBLISHED
+            },
+            select: { id: true }
+        })
+
+        if (!exists) {
+            throw new ApiError(httpStatus.NOT_FOUND, "Post Not Found")
+        }
+
+        const post = await tx.post.update({
             where: {
                 id: postId
             },
@@ -180,13 +195,6 @@ const getPostDetails = async (postId: string) => {
                 views: {
                     increment: 1
                 }
-            }
-        })
-
-        const post = await tx.post.findUnique({
-            where: {
-                id: postId,
-                isPremium: false
             },
             include: {
                 author: {
@@ -194,23 +202,30 @@ const getPostDetails = async (postId: string) => {
                         password: true
                     }
                 },
-                comment: true,
+                // Spec 9.3: return approved comments only, with a safe author summary
+                comment: {
+                    where: { status: CommentStatus.APPROVED },
+                    include: {
+                        author: {
+                            select: {
+                                id: true,
+                                name: true,
+                                profile: { select: { profilePhoto: true } }
+                            }
+                        }
+                    },
+                    orderBy: { createdAt: "desc" }
+                },
                 _count: {
                     select: {
-                        comment: true
+                        comment: { where: { status: CommentStatus.APPROVED } }
                     }
                 }
             }
         })
 
-        if (!post) {
-            throw new ApiError(httpStatus.NOT_FOUND, "Post Not Found")
-        }
-
         return post
     })
-
-
 
     return transactionResult
 }

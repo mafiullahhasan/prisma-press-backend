@@ -2,41 +2,32 @@ import { prisma } from "../../lib/prisma"
 import config from "../../config"
 import bcrypt from "bcryptjs"
 import { IRegisterUser } from "./user.interface"
+import { ApiError } from "../../utils/ApiError"
+import httpStatus from "http-status"
 
 
 const registerUser = async (payload: IRegisterUser) => {
     const { name, email, password, profilePhoto } = payload;
-    const existedUser = await prisma.user.findUniqueOrThrow({
-        where: {
-            email: email
-        }
+
+    const existedUser = await prisma.user.findUnique({
+        where: { email }
     })
+
+    if (existedUser) {
+        throw new ApiError(httpStatus.CONFLICT, "User already exists with this email")
+    }
 
     const hashedPassword = await bcrypt.hash(password, Number(config.bcrypt_Salt_rounds))
 
-    const createdUser = await prisma.user.create({
+    // Nested create runs as one atomic query: user + profile are created together or not at all
+    const user = await prisma.user.create({
         data: {
-            name: name,
-            email: email,
+            name,
+            email,
             password: hashedPassword,
-        }
-    })
-
-    if (!createdUser) {
-        throw new Error("User created failed")
-    }
-
-    await prisma.profile.create({
-        data: {
-            userId: createdUser.id,
-            profilePhoto: profilePhoto
-        }
-    })
-
-    const user = await prisma.user.findUnique({
-        where: {
-            id: createdUser.id,
-            email: createdUser.email
+            profile: {
+                create: { profilePhoto }
+            }
         },
         omit: {
             password: true

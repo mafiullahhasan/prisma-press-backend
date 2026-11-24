@@ -1,3 +1,4 @@
+import { PostStatus } from "../../../generated/prisma/enums"
 import { PostWhereInput } from "../../../generated/prisma/models"
 import { prisma } from "../../lib/prisma"
 import { IPostQuery } from "../post/post.interface"
@@ -45,7 +46,8 @@ const getPremiumPost = async (query: IPostQuery) => {
     }
 
     andConditions.push({
-        isPremium: true
+        isPremium: true,
+        status: PostStatus.PUBLISHED
     })
 
     const [posts, totalPostCount] = await Promise.all([
