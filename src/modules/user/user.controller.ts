@@ -1,8 +1,8 @@
 import { Request, Response } from "express"
 import httpStatus from "http-status"
-import { userService } from "./user.service"
-import { asyncHandler } from "../../utils/asyncHandler"
-import { ApiResponse } from "../../utils/ApiResponse"
+import { userService } from "./user.service.js"
+import { asyncHandler } from "../../utils/asyncHandler.js"
+import { ApiResponse } from "../../utils/ApiResponse.js"
 
 
 const registerUser = asyncHandler(async (req: Request, res: Response) => {

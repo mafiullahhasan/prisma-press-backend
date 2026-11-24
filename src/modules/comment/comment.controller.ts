@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { asyncHandler } from "../../utils/asyncHandler";
-import { commentsService } from "./comment.service";
+import { asyncHandler } from "../../utils/asyncHandler.js";
+import { commentsService } from "./comment.service.js";
 import httpStatus from "http-status"
-import { ApiResponse } from "../../utils/ApiResponse";
-import { ApiError } from "../../utils/ApiError";
+import { ApiResponse } from "../../utils/ApiResponse.js";
+import { ApiError } from "../../utils/ApiError.js";
 
 const getCommentByAuthorId = asyncHandler(async (req: Request, res: Response) => {
     const id = req.params.authorId

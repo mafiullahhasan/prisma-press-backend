@@ -1,8 +1,8 @@
-import { prisma } from "../../lib/prisma"
-import config from "../../config"
+import { prisma } from "../../lib/prisma.js"
+import config from "../../config/index.js"
 import bcrypt from "bcryptjs"
-import { IRegisterUser } from "./user.interface"
-import { ApiError } from "../../utils/ApiError"
+import { IRegisterUser } from "./user.interface.js"
+import { ApiError } from "../../utils/ApiError.js"
 import httpStatus from "http-status"
 
 

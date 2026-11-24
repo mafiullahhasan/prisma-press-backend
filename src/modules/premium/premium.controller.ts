@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { asyncHandler } from "../../utils/asyncHandler";
-import { premiumService } from "./premium.service";
+import { asyncHandler } from "../../utils/asyncHandler.js";
+import { premiumService } from "./premium.service.js";
 import httpStatus from "http-status"
-import { ApiResponse } from "../../utils/ApiResponse";
+import { ApiResponse } from "../../utils/ApiResponse.js";
 
 const getPremiumPost = asyncHandler(async (req: Request, res: Response) => {
 

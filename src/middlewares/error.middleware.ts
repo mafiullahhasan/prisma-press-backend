@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import httpStatus from 'http-status';
-import { Prisma } from '../../generated/prisma/client';
-import { ApiError } from '../utils/ApiError';
+import { Prisma } from '../../generated/prisma/client.js';
+import { ApiError } from '../utils/ApiError.js';
 
 const errorHandler = (
     err: any,

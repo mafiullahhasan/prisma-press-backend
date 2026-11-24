@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "prisma generate --config prisma7.config.ts && tsc",
+    "vercel-build": "prisma generate --config prisma7.config.ts",
     "postinstall": "prisma generate --config prisma7.config.ts",
     "start": "node dist/server.js",
     "stripe:webhook": "stripe listen --events checkout.session.completed,customer.subscription.updated,customer.subscription.deleted --forward-to localhost:5000/api/subscription/webhook",

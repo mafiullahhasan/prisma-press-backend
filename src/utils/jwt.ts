@@ -1,5 +1,5 @@
 import jwt, { SignOptions, JwtPayload } from 'jsonwebtoken';
-import { ApiError } from './ApiError';
+import { ApiError } from './ApiError.js';
 
 // 1. Define a strict type for your user payload so you don't make typos
 export interface IJwtPayload extends JwtPayload {

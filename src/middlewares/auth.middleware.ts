@@ -1,12 +1,12 @@
 import { NextFunction, Request, Response } from 'express';
 import httpStatus from 'http-status';
-import { ApiError } from '../utils/ApiError';
-import { verifyToken } from '../utils/jwt';
-import config from '../config';
-import { asyncHandler } from '../utils/asyncHandler';
+import { ApiError } from '../utils/ApiError.js';
+import { verifyToken } from '../utils/jwt.js';
+import config from '../config/index.js';
+import { asyncHandler } from '../utils/asyncHandler.js';
 import { JwtPayload } from 'jsonwebtoken';
-import { Role } from '../../generated/prisma/enums';
-import { prisma } from '../lib/prisma';
+import { Role } from '../../generated/prisma/enums.js';
+import { prisma } from '../lib/prisma.js';
 
 declare global {
     namespace Express {

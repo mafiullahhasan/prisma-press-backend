@@ -1,7 +1,7 @@
-import { prisma } from "../../lib/prisma"
-import { ApiError } from "../../utils/ApiError"
+import { prisma } from "../../lib/prisma.js"
+import { ApiError } from "../../utils/ApiError.js"
 import httpStatus from "http-status"
-import { ICommentUpdateInput } from "./comment.interface"
+import { ICommentUpdateInput } from "./comment.interface.js"
 
 
 const getCommentsByAuthorId = async (id: string) => {

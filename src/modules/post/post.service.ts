@@ -1,8 +1,8 @@
-import { CommentStatus, PostStatus } from "../../../generated/prisma/enums"
-import { PostWhereInput } from "../../../generated/prisma/models"
-import { prisma } from "../../lib/prisma"
-import { ApiError } from "../../utils/ApiError"
-import { ICreatePostPayload, IPostQuery, IUpdatePostPayload } from "./post.interface"
+import { CommentStatus, PostStatus } from "../../../generated/prisma/enums.js"
+import { PostWhereInput } from "../../../generated/prisma/models.js"
+import { prisma } from "../../lib/prisma.js"
+import { ApiError } from "../../utils/ApiError.js"
+import { ICreatePostPayload, IPostQuery, IUpdatePostPayload } from "./post.interface.js"
 import httpStatus from "http-status"
 
 

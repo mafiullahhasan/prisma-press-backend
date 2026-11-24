@@ -1,7 +1,7 @@
-import { PostStatus } from "../../../generated/prisma/enums"
-import { PostWhereInput } from "../../../generated/prisma/models"
-import { prisma } from "../../lib/prisma"
-import { IPostQuery } from "../post/post.interface"
+import { PostStatus } from "../../../generated/prisma/enums.js"
+import { PostWhereInput } from "../../../generated/prisma/models.js"
+import { prisma } from "../../lib/prisma.js"
+import { IPostQuery } from "../post/post.interface.js"
 
 const getPremiumPost = async (query: IPostQuery) => {
 

@@ -1,0 +1,11 @@
+.env
+.env.*
+node_modules
+dist
+generated
+pnpm-lock.yaml
+pnpm-workspace.yaml
+.agents
+.claude
+.windsurf
+skills-lock.json

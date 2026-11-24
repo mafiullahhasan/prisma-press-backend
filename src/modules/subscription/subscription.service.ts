@@ -1,9 +1,9 @@
 import Stripe from "stripe"
-import config from "../../config"
-import { prisma } from "../../lib/prisma"
-import { stripe } from "../../lib/stripe"
-import { ApiError } from "../../utils/ApiError"
-import { getPeriodEnd, handleChangeSubscription, handleCheckoutCompleted } from "./subscription.utils"
+import config from "../../config/index.js"
+import { prisma } from "../../lib/prisma.js"
+import { stripe } from "../../lib/stripe.js"
+import { ApiError } from "../../utils/ApiError.js"
+import { getPeriodEnd, handleChangeSubscription, handleCheckoutCompleted } from "./subscription.utils.js"
 import httpStatus from "http-status"
 
 const createCheckOutSession = async (userId: string) => {

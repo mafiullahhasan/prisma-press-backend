@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { asyncHandler } from "../../utils/asyncHandler";
-import { postService } from "./post.service";
+import { asyncHandler } from "../../utils/asyncHandler.js";
+import { postService } from "./post.service.js";
 import httpStatus from "http-status"
-import { ApiResponse } from "../../utils/ApiResponse";
-import { ApiError } from "../../utils/ApiError";
+import { ApiResponse } from "../../utils/ApiResponse.js";
+import { ApiError } from "../../utils/ApiError.js";
 
 
 

@@ -1,10 +1,10 @@
 import bcrypt from "bcryptjs"
-import { prisma } from "../../lib/prisma"
-import { ILoginUser } from "./auth.interface"
-import { ApiError } from "../../utils/ApiError"
+import { prisma } from "../../lib/prisma.js"
+import { ILoginUser } from "./auth.interface.js"
+import { ApiError } from "../../utils/ApiError.js"
 import httpStatus from "http-status"
-import config from "../../config"
-import { createToken, verifyToken } from "../../utils/jwt"
+import config from "../../config/index.js"
+import { createToken, verifyToken } from "../../utils/jwt.js"
 
 
 const loginUser = async (payload: ILoginUser) => {

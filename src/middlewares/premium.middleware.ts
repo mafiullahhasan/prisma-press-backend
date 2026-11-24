@@ -1,8 +1,8 @@
 
 import { NextFunction, Request, Response } from "express";
-import { asyncHandler } from "../utils/asyncHandler";
-import { prisma } from "../lib/prisma";
-import { ApiError } from "../utils/ApiError";
+import { asyncHandler } from "../utils/asyncHandler.js";
+import { prisma } from "../lib/prisma.js";
+import { ApiError } from "../utils/ApiError.js";
 import httpStatus from "http-status";
 
 export const subscriptionGuard = () => {

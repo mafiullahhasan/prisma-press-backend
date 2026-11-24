@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
-import { asyncHandler } from "../../utils/asyncHandler";
-import { authService } from "./auth.service";
-import { ApiResponse } from "../../utils/ApiResponse";
+import { asyncHandler } from "../../utils/asyncHandler.js";
+import { authService } from "./auth.service.js";
+import { ApiResponse } from "../../utils/ApiResponse.js";
 import httpStatus from "http-status"
 
 

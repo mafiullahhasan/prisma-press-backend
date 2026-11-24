@@ -1,15 +1,15 @@
 import express, { Application, Request, Response } from "express";
 import cors from "cors"
-import config from "./config";
+import config from "./config/index.js";
 import cookieParser from "cookie-parser";
-import { userRoutes } from "./modules/user/user.router";
-import { errorHandler } from "./middlewares/error.middleware";
-import { authRoutes } from "./modules/auth/auth.router";
-import { postRoutes } from "./modules/post/post.router";
-import { commentRoutes } from "./modules/comment/comment.router";
-import { notFoundHandler } from "./middlewares/notFound.middleware";
-import { subscriptionRoutes } from "./modules/subscription/subscription.router";
-import { premiumRoutes } from "./modules/premium/premium.router";
+import { userRoutes } from "./modules/user/user.router.js";
+import { errorHandler } from "./middlewares/error.middleware.js";
+import { authRoutes } from "./modules/auth/auth.router.js";
+import { postRoutes } from "./modules/post/post.router.js";
+import { commentRoutes } from "./modules/comment/comment.router.js";
+import { notFoundHandler } from "./middlewares/notFound.middleware.js";
+import { subscriptionRoutes } from "./modules/subscription/subscription.router.js";
+import { premiumRoutes } from "./modules/premium/premium.router.js";
 
 
 

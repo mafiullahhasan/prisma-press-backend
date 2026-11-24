@@ -4,9 +4,6 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "target": "ES2023",
-    "types": [
-      "node"
-    ],
     "sourceMap": true,
     "declaration": false,
     "declarationMap": false,

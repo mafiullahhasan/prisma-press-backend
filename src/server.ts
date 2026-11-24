@@ -1,5 +1,5 @@
-import connectDB from "./db/index";
-import config from "./config/index";
+import connectDB from "./db/index.js";
+import config from "./config/index.js";
 import app from "./app.js";
 
 // On Vercel the app runs as a serverless function: Vercel imports the default
