@@ -69,10 +69,11 @@ const updateMyProfile = async (userId: string, payload: any) => {
         data: {
             name,
             email,
+            // upsert: older accounts may have no profile row yet
             profile: {
-                update: {
-                    profilePhoto,
-                    bio
+                upsert: {
+                    create: { profilePhoto, bio },
+                    update: { profilePhoto, bio }
                 }
             }
         },
